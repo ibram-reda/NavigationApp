@@ -1,0 +1,71 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+          <StackPanel>
+            <Label Classes="Title center" Content="Main Title"/>
+            <Label Classes="SubTitle center" Content="Sub Title"/>
+          </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+  <Style Selector="Label.Title">
+    <Setter Property="Margin" Value="0 15  0 0"/>
+    <Setter Property="FontSize" Value="24"/>
+    <Setter Property="FontFamily" Value="Arial"/>
+  </Style>
+  <Style Selector="Label.SubTitle">
+    <Setter Property="Margin" Value="0"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="FontFamily" Value="Arial"/>
+    <Setter Property="Foreground" Value="#999"/>
+  </Style>
+  
+  <Style Selector=":is(Control).center">
+    <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+  </Style>
+
+  <Style Selector="RadioButton" >
+    <Setter Property="BorderBrush" Value="Yellow"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Margin" Value="5"/>
+    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="CornerRadius" Value="12"/>
+    <Setter Property="Width" Value="180"/>
+    <Setter Property="Padding" Value="5"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Border
+            CornerRadius="{TemplateBinding CornerRadius}"
+            Width="{TemplateBinding Width}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}">
+            <ContentPresenter
+              Name="PART_ContentPresenter"
+              Padding="{TemplateBinding Padding}"
+              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+              Content="{TemplateBinding Content}"
+              ContentTemplate="{TemplateBinding ContentTemplate}"
+              RecognizesAccessKey="True" />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+
+    <Style Selector="^:pointerover /template/ Border">
+      <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style Selector="^:checked /template/ Border">
+      <Setter Property="Background" Value="LightBlue"/>
+      <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+    <Style Selector="^:checked /template/ ContentPresenter">
+      <Setter Property="Foreground" Value="Black"/>
+    </Style>
+  </Style>
+</Styles>

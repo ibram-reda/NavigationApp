@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:NavigationApp.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="NavigationApp.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+
+  <Grid RowDefinitions="60,100,*" HorizontalAlignment="Center">
+    <!--Titles-->
+    <StackPanel>
+      <Label Classes="Title center" Content="{Binding Title}"/>
+      <Label Classes="SubTitle center" Content="{Binding CurrentViewModel.Title}"/>
+    </StackPanel>
+    
+    <!--Navigation Button-->
+    <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="5">
+      <RadioButton Content="Server Configration"
+                   Command="{Binding ActivateViewCommand}"
+                   CommandParameter="Server"/>
+      
+      <RadioButton Content="Terminal Configration"
+                   Command="{Binding ActivateViewCommand}"
+                   CommandParameter="Terminal"/>
+      
+      <RadioButton Content="Admin Panel"
+                   IsChecked="True"
+                   Command="{Binding ActivateViewCommand}"
+                   CommandParameter="Admin"/>
+    </StackPanel>
+    
+    <!--Main Content-->
+    <ContentControl Grid.Row="2" Content="{Binding CurrentViewModel}" />
+  </Grid>
+</UserControl>
